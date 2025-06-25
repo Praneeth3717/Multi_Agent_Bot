@@ -39,7 +39,6 @@ const Home = () => {
 
     try {
       if (!isSignIn) {
-        // Sign Up
         if (user.password !== user.confirmPassword) {
           setError("Passwords do not match!");
           setIsLoading(false);
@@ -100,7 +99,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen w-full grid grid-cols-1 md:grid-cols-5 bg-white relative">
-      {/* Form Section */}
       <div className="col-span-1 md:col-span-3 flex items-center justify-center p-4 sm:p-5 md:p-8 bg-gray-50 relative z-10">
         <div className="w-full max-w-md px-4 sm:px-0">
           <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-2">TrackMyCash</h1>
@@ -190,8 +188,7 @@ const Home = () => {
           </p>
         </div>
       </div>
-
-      {/* Right Side Image */}
+      
       <div className="col-span-2 hidden md:block relative">
         <img src="./cover_photo.webp" alt="Background" className="w-full h-full object-cover" />
       </div>
