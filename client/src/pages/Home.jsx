@@ -48,7 +48,7 @@ const Home = () => {
         const { username, email, password, role } = user;
 
         try {
-          await axios.post("http://localhost:5000/auth/signup", {
+          await axios.post("https://multi-agent-bot-backend.onrender.com/auth/signup", {
             username,
             email,
             password,
@@ -74,7 +74,7 @@ const Home = () => {
       } else {
         const { email, password } = user;
 
-        const response = await axios.post("http://localhost:5000/auth/login", {
+        const response = await axios.post("https://multi-agent-bot-backend.onrender.com/auth/login", {
           email,
           password,
         });
