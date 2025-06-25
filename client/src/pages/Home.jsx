@@ -101,11 +101,6 @@ const Home = () => {
     <div className="min-h-screen w-full grid grid-cols-1 md:grid-cols-5 bg-white relative">
       <div className="col-span-1 md:col-span-3 flex items-center justify-center p-4 sm:p-5 md:p-8 bg-gray-50 relative z-10">
         <div className="w-full max-w-md px-4 sm:px-0">
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-2">TrackMyCash</h1>
-          <p className="text-sm italic text-gray-600 mb-1">
-            "Beware of little expenses; a small leak will sink a great ship."
-          </p>
-          <p className="text-xs text-gray-500 mb-4">– Benjamin Franklin</p>
 
           <h2 className="text-base sm:text-lg md:text-xl font-medium mb-2 sm:mb-3">
             {isSignIn ? "Welcome Back, Friend...!" : "Sign Up and Go!"}
