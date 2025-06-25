@@ -30,8 +30,8 @@ const sendMessage = async (e) => {
 
     const endpoint =
       role === "admin"
-        ? "http://localhost:5000/agent/dashboard"
-        : "http://localhost:5000/agent/support";
+        ? "https://multi-agent-bot-backend.onrender.com/agent/dashboard"
+        : "https://multi-agent-bot-backend.onrender.com/agent/support";
 
     const response = await axios.post(endpoint, {
       message: input,
