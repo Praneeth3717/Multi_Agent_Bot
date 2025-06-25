@@ -16,6 +16,8 @@ const Navbar = () => {
   const navigate = useNavigate();
     const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    sessionStorage.removeItem("chatMessages");
     navigate("/");
   };
   return (

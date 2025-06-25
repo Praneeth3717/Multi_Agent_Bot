@@ -25,7 +25,15 @@ const sendMessage = async (e) => {
   setInput("");
 
   try {
-    const response = await axios.post(`http://localhost:5000/agent/support`, {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const role = userData?.role || "support";
+
+    const endpoint =
+      role === "admin"
+        ? "http://localhost:5000/agent/dashboard"
+        : "http://localhost:5000/agent/support";
+
+    const response = await axios.post(endpoint, {
       message: input,
     });
 
@@ -43,7 +51,6 @@ const sendMessage = async (e) => {
     ]);
   }
 };
-
 
 
   useEffect(() => {
