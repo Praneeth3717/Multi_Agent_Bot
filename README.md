@@ -38,7 +38,7 @@ A comprehensive management system featuring AI-powered support and dashboard age
 - **Real-time Updates**: Live data synchronization
 - **Secure Authentication**: Role-based access control
 
-- 
+ 
 ## 🧠 Multi-Agent Bot Interaction Samples
 
 This file contains example interactions with the Multi-Agent Support Bot, including both user inputs and the bot's responses.
@@ -84,6 +84,7 @@ This file contains example interactions with the Multi-Agent Support Bot, includ
 **"Which classes have the highest drop-off rates?**
 
 `The class with the highest drop-off rate is "Yoga Intermediate on Wed Jun 25 2025," with an attendance rate of 50% and one dropout, Anjali Devi.`
+
 
 
 ## 📋 Prerequisites
