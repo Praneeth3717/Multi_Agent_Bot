@@ -38,6 +38,54 @@ A comprehensive management system featuring AI-powered support and dashboard age
 - **Real-time Updates**: Live data synchronization
 - **Secure Authentication**: Role-based access control
 
+- 
+## 🧠 Multi-Agent Bot Interaction Samples
+
+This file contains example interactions with the Multi-Agent Support Bot, including both user inputs and the bot's responses.
+
+### Support Bot
+
+**What course has Arjun Reddy enrolled in, and what’s its current status?**
+
+`Arjun Reddy has enrolled in the "Yoga Beginner" course, and its current status is completed.`
+
+**Can you tell me the client associated with order number ORD-YB-002 and the course linked to it?**
+
+`The client associated with order number ORD-YB-002 is Pooja Sharma, and the course linked to it is Yoga Beginner.`
+
+**I need the payment method, the date it was made, and the current status for order ORD-YI-001**
+
+`The payment for order ORD-YI-001 was made via cash on Wednesday, March 26, 2025. The current status of the order is paid.`
+
+**I'd like to know the upcoming Yoga Advanced class dates, the instructor, and where they are held.**
+
+`The upcoming Yoga Advanced classes are scheduled as follows: - Instructor: Deepa Menon - Duration: 12 weeks, from Monday, September 1, 2025, to Monday, November 24, 2025 - Location: Studio B The class dates and times are: - Friday, September 5, 2025, from 08:00 AM to 09:30 AM - Friday, September 12, 2025, from 08:00 AM to 09:30 AM - Friday, September 19, 2025, from 08:00 AM to 09:30 AM Please note that all classes are held on Fridays during the specified time slot.`
+
+**I'd like to create an enquiry entry for Praneeth Chandupatla with contact details praneethchandupatla@gmail.com and 9963310841 for the Yoga Intermediate course.**
+
+`The enquiry entry for Praneeth Chandupatla has been successfully created. What would you like to do next regarding the Yoga Intermediate course?`
+
+---
+
+### Dashboard Bot
+
+**Can you give me the total earnings and pending dues from all the courses?**
+
+`The total earnings from all the courses amount to $500, and the pending dues are $700.`
+
+**How many active and inactive clients do we currently have?**
+
+`We currently have 8 active clients and no inactive clients.`
+
+**Which service has the highest number of enrollments?**
+
+`The service with the highest number of enrollments is "Yoga Beginner," with a count of 3 enrollments.`
+
+**"Which classes have the highest drop-off rates?**
+
+`The class with the highest drop-off rate is "Yoga Intermediate on Wed Jun 25 2025," with an attendance rate of 50% and one dropout, Anjali Devi.`
+
+
 ## 📋 Prerequisites
 
 - Node.js (v16 or higher)
