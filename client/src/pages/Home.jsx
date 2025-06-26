@@ -102,6 +102,10 @@ const Home = () => {
       <div className="col-span-1 md:col-span-3 flex items-center justify-center p-4 sm:p-5 md:p-8 bg-gray-50 relative z-10">
         <div className="w-full max-w-md px-4 sm:px-0">
 
+        <p className="text-xs sm:text-sm text-gray-700 mb-2 bg-amber-200 p-1 text-center rounded-lg">
+          Please <strong>SIGNUP</strong> as <span className="font-semibold text-blue-800">admin</span> or <span className="font-semibold text-blue-800">support</span> role and <strong>LOGIN</strong> to test the Dashboard and Support agents.
+        </p>
+
           <h2 className="text-base sm:text-lg md:text-xl font-medium mb-2 sm:mb-3">
             {isSignIn ? "Welcome Back, Friend...!" : "Sign Up and Go!"}
           </h2>
