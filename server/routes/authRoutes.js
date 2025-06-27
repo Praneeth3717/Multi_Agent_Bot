@@ -9,9 +9,9 @@ router.post("/signup", async (req, res) => {
   const { username, email, password, role } = req.body;
 
   try {
-    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    const existingUser = await User.findOne({ email });
     if (existingUser)
-      return res.status(409).json({ error: "Username or Email already exists" });
+      return res.status(409).json({ error: "Email already exists" });
 
     if (password.length < 6)
       return res.status(400).json({ error: "Password too short" });
