@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 const clientSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  email: { type: String, required: true, unique: true, index: true },
-  phone: { type: String, required: true, unique: true, index: true },
+  email: { type: String, required: true, unique: true},
+  phone: { type: String, required: true, unique: true},
   dob: { type: Date },
   isActive: { type: Boolean, default: true },
   enrolledCourses: [
