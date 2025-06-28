@@ -15,20 +15,19 @@ export const getPaymentInfo = new DynamicStructuredTool({
       const order = await Order.findOne({ orderNumber: identifier }).populate("clientId");
 
       if (order) {
-        const payments = await Payment.find({ orderId: order._id, status: "successful" });
+        const payments = await Payment.find({ orderId: order._id});
 
         const paymentInfo = payments.map(p => {
           return ` ₹${p.amountPaid} via ${p.paymentMethod} on ${new Date(p.paymentDate).toDateString()}`;
         }).join("\n") || "No successful payments.";
 
         return `Payment Info for Order #${order.orderNumber} 
-  Client: ${order.clientId?.name} (${order.clientId?.email}) 
-  Course: ${order.courseName || "N/A"} 
+  Client: ${order.clientId?.name}
+  Course: ${order.courseName} 
   Amount: ₹${order.amount} 
   Status: ${order.status} 
   Payments: ${paymentInfo}`;
 }
-
       const client = await Client.findOne({
         $or: [
           { name: { $regex: identifier, $options: "i" } },
@@ -42,14 +41,14 @@ export const getPaymentInfo = new DynamicStructuredTool({
       const orders = await Order.find({ clientId: client._id });
       if (orders.length === 0) return `No orders found for ${client.name}.`;
 
-      let output = ` Payment Summary for ${client.name} (${client.email})\n`;
+      let output = `Payment Summary for ${client.name}\n`;
 
       for (const order of orders) {
-        const payments = await Payment.find({ orderId: order._id, status: "successful" });
+        const payments = await Payment.find({ orderId: order._id });
 
         const paymentLines = payments.map(p => {
-          return `     ₹${p.amountPaid} via ${p.paymentMethod} on ${new Date(p.paymentDate).toDateString()}`;
-        }).join("\n") || "    No successful payments.";
+          return `₹${p.amountPaid} via ${p.paymentMethod} on ${new Date(p.paymentDate).toDateString()}`;
+        }).join("\n") || "No successful payments.";
 
         output += `\n Order #${order.orderNumber} | ₹${order.amount} | ${order.status}\n${paymentLines}\n`;
       }

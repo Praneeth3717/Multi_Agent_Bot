@@ -7,11 +7,11 @@ const formatDate = (date) => date ? new Date(date).toDateString() : "N/A";
 
 export const discoverServices = new DynamicStructuredTool({
   name: "discover_services",
-  description: "Get class schedules by instructor or course name with full details like date, time, and location.",
+  description: "Get class schedules by instructor or course name and return the required details like date, time, and location.",
   schema: z.object({
     instructor: z.string().optional().describe("Instructor name to filter classes by"),
     courseName: z.string().optional().describe("Course name to filter classes by"),
-    status: z.string().optional().describe("Class status: scheduled, cancelled, or completed")
+    status: z.enum(["scheduled", "cancelled", "completed"]).optional().describe("Filter classes by their current status")
   }),
   func: async ({ instructor, courseName, status }) => {
     try {
@@ -20,37 +20,29 @@ export const discoverServices = new DynamicStructuredTool({
       if (instructor) {
         query.instructor = { $regex: instructor, $options: "i" };
       }
-
       if (status) {
-        const allowed = ["scheduled", "cancelled", "completed"];
-        const normalized = status.toLowerCase();
-        if (allowed.includes(normalized)) {
-          query.status = normalized;
-        }
+        query.status = status;
       }
-
       const classes = await Class.find(query)
         .sort({ date: 1 })
         .populate("courseId");
 
-      const filtered = (courseName
+      let filtered = courseName
         ? classes.filter(cl =>
-            cl.courseId && cl.courseId.name?.toLowerCase().includes(courseName.toLowerCase())
-          )
-        : classes
-      ).filter(cl => cl.courseId); 
+          cl.courseId.name?.toLowerCase().includes(courseName.toLowerCase())
+      ): classes;
 
       if (filtered.length === 0) {
         return "No matching classes found for the given filters.";
       }
 
       return filtered.map(cl => {
-        return `Course: ${cl.courseId?.name || "Unknown"}
-Instructor: ${cl.instructor || cl.courseId?.instructor || "N/A"}
-Duration: ${formatDate(cl.courseId?.startDate)} to ${formatDate(cl.courseId?.endDate)} (${cl.courseId?.durationWeeks || "?"} weeks)
-Class Date: ${formatDate(cl.date)} from ${cl.startTime || "?"} to ${cl.endTime || "?"}
-Location: ${cl.location || "N/A"}
-Status: ${cl.status || "N/A"}`;
+        return `Course: ${cl.courseId?.name}
+Instructor: ${cl.instructor}
+Duration: ${formatDate(cl.courseId?.startDate)} to ${formatDate(cl.courseId?.endDate)} (${cl.courseId?.durationWeeks} weeks)
+Class Date: ${formatDate(cl.date)} from ${cl.startTime} to ${cl.endTime}
+Location: ${cl.location}
+Status: ${cl.status}`;
       }).join("\n\n");
 
     } catch (err) {

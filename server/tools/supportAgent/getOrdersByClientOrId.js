@@ -12,18 +12,13 @@ export const getOrdersByClientOrId = new DynamicStructuredTool({
   }),
   func: async ({ identifier, status }) => {
     try {
-      let orders = [];
       const orderMatch = await Order.findOne({ orderNumber: identifier }).populate("clientId");
       if (orderMatch) {
-        if (status && orderMatch.status !== status) {
-          return `Order ${identifier} found but status is '${orderMatch.status}', not '${status}'.`;
-        }
-
         return `Order #${orderMatch.orderNumber}
 Client: ${orderMatch.clientId?.name}
 Service: ${orderMatch.courseName}
 Amount: ₹${orderMatch.amount}
-Status: ${orderMatch.status}`;
+Status: ${orderMatch.status}`
       }
 
       const client = await Client.findOne({
@@ -33,13 +28,12 @@ Status: ${orderMatch.status}`;
           { phone: { $regex: identifier, $options: "i" } }
         ]
       });
-
       if (!client) return "Client not found.";
 
       const query = { clientId: client._id };
       if (status) query.status = status;
 
-      orders = await Order.find(query);
+      const orders = await Order.find(query);
 
       if (orders.length === 0) {
         return `No ${status || ""} orders found for ${client.name}.`;
