@@ -6,6 +6,7 @@ import { getPaymentInfo } from "../tools/supportAgent/getPaymentInfo.js";
 import { discoverServices } from "../tools/supportAgent/discoverServices.js";
 import { createClientEnquiry } from "../tools/supportAgent/createClientEnquiry.js";
 import { createOrder } from "../tools/supportAgent/createOrder.js";
+import { supportFallback } from "../tools/supportAgent/supportFallback.js";
 
 const model = new ChatOpenAI({
   modelName: "gpt-4-1106-preview",
@@ -21,6 +22,7 @@ export const SupportAgent = createReactAgent({
     getPaymentInfo,
     discoverServices,
     createClientEnquiry,
-    createOrder
+    createOrder,
+    supportFallback
   ],
 });

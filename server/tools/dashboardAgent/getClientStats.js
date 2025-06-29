@@ -17,20 +17,15 @@ export const getClientStats = new DynamicStructuredTool({
       const day = today.getDate();
       const month = today.getMonth() + 1;
 
-      const birthdays = await Client.find({
-        dob: {
-          $exists: true,
-          $ne: null
+      const birthdayClients = await Client.find({
+        dob: { $exists: true, $ne: null },
+        $expr: {
+          $and: [
+            { $eq: [{ $dayOfMonth: "$dob" }, day] },
+            { $eq: [{ $month: "$dob" }, month] }
+          ]
         }
-      }).lean();
-
-      const birthdayClients = birthdays.filter(c => {
-        const dob = new Date(c.dob);
-        return dob.getDate() === day && dob.getMonth() + 1 === month;
-      }).map(c => ({
-        name: c.name,
-        email: c.email
-      }));
+        }, { name: 1, email: 1, _id: 0 }).lean();
 
       const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
       const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
