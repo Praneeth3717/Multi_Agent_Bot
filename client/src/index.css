@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* ChatGPT Dark Mode Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #141414; /* Main background */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #343540; /* Scroll thumb like ChatGPT panel border */
+  border-radius: 10px;
+  border: 2px solid #141414; /* Adds inner shadow effect */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #565869; /* Subtle lighter gray on hover */
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #343540 #141414;
+}
