@@ -39,7 +39,7 @@ const Home = () => {
     setError("");
 
     try {
-      const baseURL = "http://localhost:5000";
+      const baseURL = "https://multi-agent-bot-backend.onrender.com";
 
       if (!isSignIn) {
         if (user.password !== user.confirmPassword) {

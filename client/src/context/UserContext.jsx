@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [appLoading, setAppLoading] = useState(true);
 
-  const baseURL = "http://localhost:5000";
+  const baseURL = "https://multi-agent-bot-backend.onrender.com";
 
   const fetchUser = async () => {
     try {

@@ -37,11 +37,7 @@ const ChatBox = () => {
     ]);
 
     try {
-      const endpoint =
-        userData?.role === "admin"
-          ? "http://localhost:5000/agent/dashboard"
-          : "http://localhost:5000/agent/support";
-
+      const endpoint = `https://multi-agent-bot-backend.onrender.com/agent/${userData?.role === "admin" ? "dashboard" : "support"}`;
       const res = await axios.post(
         endpoint,
         { message: input },
