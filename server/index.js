@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 // app.use(cors());
 app.use(
   cors({
-    origin: "https://multi-agent-bot.vercel.app/",
+    origin: "https://multi-agent-bot.vercel.app",
     credentials: true,
   })
 );
